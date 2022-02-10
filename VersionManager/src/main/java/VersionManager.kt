@@ -169,13 +169,9 @@ object Deps {
 
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.7"
 
-    val SmartRefreshLayout = SmartRefreshLayoutObject
-
-    object SmartRefreshLayoutObject {
-        const val Kernel = "com.scwang.smart:refresh-layout-kernel:2.0.3"
-        const val HeaderClassics = "com.scwang.smart:refresh-header-classics:2.0.3"
-        const val FooterClassics = "com.scwang.smart:refresh-footer-classics:2.0.3"
-    }
+    const val smartRefreshLayout_kernel = "com.scwang.smart:refresh-layout-kernel:2.0.3"
+    const val smartRefreshLayout_header_classics = "com.scwang.smart:refresh-header-classics:2.0.3"
+    const val smartRefreshLayout_footer_classics = "com.scwang.smart:refresh-footer-classics:2.0.3"
 }
 
 

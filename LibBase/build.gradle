@@ -41,7 +41,7 @@ dependencies {
     api "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
     api "androidx.lifecycle:lifecycle-common-java8:2.4.0"
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.21"
 
 //    api Kotlin.kotlin_stdlib
 //    api Androidx.core_ktx
@@ -67,11 +67,11 @@ dependencies {
     api Deps.utils
     api Deps.lottie
     api Deps.BRVAH
-    api Deps.SmartRefreshLayout.Kernel
-    api Deps.SmartRefreshLayout.HeaderClassics
-    api Deps.SmartRefreshLayout.FooterClassics
+    api Deps.smartRefreshLayout_kernel
+    api Deps.smartRefreshLayout_header_classics
+    api Deps.smartRefreshLayout_footer_classics
 
-    testImplementation Tests.junit
-    androidTestImplementation Tests.androidx_junit
-    androidTestImplementation Tests.espresso
+//    testImplementation Tests.junit
+//    androidTestImplementation Tests.androidx_junit
+//    androidTestImplementation Tests.espresso
 }
