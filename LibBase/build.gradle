@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk BuildVersion.compileSdkVersion
+
+    defaultConfig {
+        minSdk BuildVersion.minSdkVersion
+        targetSdk BuildVersion.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    api "androidx.appcompat:appcompat:1.4.0"
+    api "androidx.core:core-ktx:1.7.0"
+    api "com.kunminx.arch:unpeek-livedata:7.2.0-beta1"
+    api "androidx.activity:activity-ktx:1.4.0"
+    api "androidx.fragment:fragment-ktx:1.4.0"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
+    api "androidx.lifecycle:lifecycle-common-java8:2.4.0"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31"
+
+//    api Kotlin.kotlin_stdlib
+//    api Androidx.core_ktx
+//    api Androidx.core_runtime
+//    api Androidx.appcompat
+//    api Androidx.constraintlayout
+//    api Androidx.livedata_ktx
+//    api Androidx.livedata_unpeek
+//    api Androidx.lifecycle_livedata_ktx
+//    api Androidx.lifecycle_runtime_ktx
+//    api Androidx.lifecycle_compiler
+//
+    api Google.material
+    api Deps.okhttp
+    api Deps.okhttp_logging
+    api Deps.retrofit
+    api Deps.adapter_rxjava3
+    api Deps.converter_gson
+    api Deps.glide
+    api Deps.glide_transformations
+    api Deps.glideCompiler
+    api Deps.glide_gpuimage
+    api Deps.utils
+    api Deps.lottie
+    api Deps.BRVAH
+    api Deps.SmartRefreshLayout.Kernel
+    api Deps.SmartRefreshLayout.HeaderClassics
+    api Deps.SmartRefreshLayout.FooterClassics
+
+    testImplementation Tests.junit
+    androidTestImplementation Tests.androidx_junit
+    androidTestImplementation Tests.espresso
+}
