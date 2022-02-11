@@ -7,5 +7,6 @@ package com.jarvis.libbase.network.manager
  */
 class NetState(var available: Boolean = true) {
 
-    var netType: NetType = NetType()
+    var netType: NetType = NetType.NETWORK_NO
+
 }
