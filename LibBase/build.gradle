@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -33,27 +34,18 @@ android {
 
 dependencies {
 
-    api "androidx.appcompat:appcompat:1.4.1"
-    api "androidx.core:core-ktx:1.7.0"
-    api "com.kunminx.arch:unpeek-livedata:7.2.0-beta1"
-    api "androidx.activity:activity-ktx:1.4.0"
-    api "androidx.fragment:fragment-ktx:1.4.1"
-    api "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
-    api "androidx.lifecycle:lifecycle-common-java8:2.4.1"
-    api "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
-
-//    api Kotlin.kotlin_stdlib
-//    api Androidx.core_ktx
-//    api Androidx.core_runtime
-//    api Androidx.appcompat
-//    api Androidx.constraintlayout
-//    api Androidx.livedata_ktx
-//    api Androidx.livedata_unpeek
-//    api Androidx.lifecycle_livedata_ktx
-//    api Androidx.lifecycle_runtime_ktx
-//    api Androidx.lifecycle_compiler
-//
+    api Kotlin.kotlin_stdlib
+    api Androidx.appcompat
+    api Androidx.core_ktx
+    api Androidx.activity_ktx
+    api Androidx.fragment_ktx
+    api Androidx.lifecycle_runtime_ktx
+    api Androidx.lifecycle_common_java8
+    api Androidx.livedata_ktx
+    api Androidx.livedata_unpeek
+    api Androidx.viewmodel_ktx
+    api Androidx.room_ktx
+    api Androidx.room_runtime
     api Google.material
     api Deps.okhttp
     api Deps.okhttp_logging
@@ -62,7 +54,6 @@ dependencies {
     api Deps.converter_gson
     api Deps.glide
     api Deps.glide_transformations
-    api Deps.glideCompiler
     api Deps.glide_gpuimage
     api Deps.utils
     api Deps.lottie
@@ -71,7 +62,11 @@ dependencies {
     api Deps.smartRefreshLayout_header_classics
     api Deps.smartRefreshLayout_footer_classics
 
-//    testImplementation Tests.junit
-//    androidTestImplementation Tests.androidx_junit
-//    androidTestImplementation Tests.espresso
+    kapt Androidx.room_compiler
+    kapt Deps.glide_compiler
+
+
+    api Tests.junit
+    api Tests.androidx_junit
+    api Tests.espresso
 }
