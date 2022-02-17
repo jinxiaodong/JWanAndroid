@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.jarvis.libbase.R
-import com.jarvis.libbase.network.RequestStatus
+import com.jarvis.network.RequestStatus
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -78,9 +78,9 @@ abstract class BasePageFragment<T> : BaseFragment() {
         lifecycleScope.launch { getListData(false) }
     }
 
-    open suspend fun createPageFlow(page: Int): Flow<RequestStatus<List<T>>> {
+    open suspend fun createPageFlow(page: Int): Flow<com.jarvis.network.RequestStatus<List<T>>> {
         return flow {
-            emit(RequestStatus.Success("",ArrayList()))
+            emit(com.jarvis.network.RequestStatus.Success("",ArrayList()))
         }
     }
 
@@ -95,10 +95,10 @@ abstract class BasePageFragment<T> : BaseFragment() {
             }.collect { state ->
 
                 when (state) {
-                    is RequestStatus.Loading -> {
+                    is com.jarvis.network.RequestStatus.Loading -> {
 
                     }
-                    is RequestStatus.Success -> {
+                    is com.jarvis.network.RequestStatus.Success -> {
                         state.data.let {
                             if (mPage == PAGE_START_POSITION) {
                                 if (it.isEmpty()) {
@@ -120,7 +120,7 @@ abstract class BasePageFragment<T> : BaseFragment() {
                             mPage += 1
                         }
                     }
-                    is RequestStatus.Error -> {
+                    is com.jarvis.network.RequestStatus.Error -> {
 
                     }
                 }

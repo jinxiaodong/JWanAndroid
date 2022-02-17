@@ -8,8 +8,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.jarvis.libbase.ktx.dismissLoading
 import com.jarvis.libbase.ktx.showLoading
 import com.jarvis.libbase.liveData.observeLoadingUI
-import com.jarvis.libbase.network.manager.NetState
-import com.jarvis.libbase.network.manager.NetWorkStateManager
+import com.jarvis.network.manager.NetState
+import com.jarvis.network.manager.NetWorkStateManager
 import com.jarvis.libbase.view.LoadingDialog
 
 /**
@@ -62,12 +62,12 @@ abstract class BaseActivity : AppCompatActivity() {
         createObserver()
         registerUiChange()
 
-        NetWorkStateManager.instance.netWorkStateCallback.observe(this) {
+        com.jarvis.network.manager.NetWorkStateManager.instance.netWorkStateCallback.observe(this) {
             onNetworkStateChanged(it)
         }
     }
 
-    open fun onNetworkStateChanged(netState: NetState) {}
+    open fun onNetworkStateChanged(netState: com.jarvis.network.manager.NetState) {}
 
 
     private fun createObserver() {

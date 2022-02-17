@@ -1,16 +1,11 @@
 package com.jarvis.libbase.base
 
 import android.app.Application
-import android.content.Context
 import android.content.IntentFilter
 import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkRequest
 import com.blankj.utilcode.util.LogUtils
 import com.jarvis.libbase.core.ApplicationHolder
-import com.jarvis.libbase.network.manager.JNetWorkCallback
-import com.jarvis.libbase.network.manager.NetWorkStateReceiver
+import com.jarvis.network.manager.NetWorkStateReceiver
 
 /**
  * @author jinxiaodong
@@ -37,7 +32,7 @@ open class BaseApp : Application() {
 
     private fun registerNetWorkStateChangeListener() {
         this.registerReceiver(
-            NetWorkStateReceiver(),
+            com.jarvis.network.manager.NetWorkStateReceiver(),
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
 
