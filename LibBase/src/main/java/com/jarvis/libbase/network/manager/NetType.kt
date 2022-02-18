@@ -1,4 +1,4 @@
-package com.jarvis.network.manager
+package com.jarvis.libbase.network.manager
 
 /**
  * @author jinxiaodong

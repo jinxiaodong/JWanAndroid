@@ -2,7 +2,10 @@ package com.jarvis.libbase.liveData
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
+import com.jarvis.libbase.base.BaseActivity
 import com.jarvis.libbase.base.BaseViewModel
+import com.jarvis.libbase.ktx.dismissLoading
+import com.jarvis.libbase.ktx.showLoading
 import com.jarvis.libbase.liveData.event.EventLiveData
 
 /**
@@ -13,9 +16,9 @@ import com.jarvis.libbase.liveData.event.EventLiveData
 
 fun ViewModel.observeLoadingUI(owner: LifecycleOwner) {
 
-    if (this is BaseViewModel && owner is LoadingUI.CallBack) {
+    if (this is BaseViewModel && owner is BaseActivity<*>) {
         this.loadingUI.showLoading.observe(owner){
-            owner.showLoading()
+            owner.showLoading(it)
         }
 
         this.loadingUI.disMiss.observe(owner){
@@ -25,20 +28,13 @@ fun ViewModel.observeLoadingUI(owner: LifecycleOwner) {
 }
 
 
+
+
 class LoadingUI {
 
     val showLoading by lazy { EventLiveData<String>() }
 
     val disMiss by lazy { EventLiveData<Boolean>() }
 
-    interface CallBack {
-        fun showLoading(message: String = "正在加载...")
 
-        fun showLoading() {
-        }
-
-        fun dismissLoading() {
-
-        }
-    }
 }

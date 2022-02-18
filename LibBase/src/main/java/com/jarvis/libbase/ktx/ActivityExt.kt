@@ -3,6 +3,10 @@ package com.jarvis.libbase.ktx
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.jarvis.libbase.base.BaseActivity
 
 /**
@@ -25,16 +29,36 @@ inline fun <reified T : Activity> Activity.startActivity(extras: Bundle) {
     startActivity(Intent(this, T::class.java).putExtras(extras))
 }
 
-fun BaseActivity.showLoading(message: String = "正在加载中,请稍后...") {
+/**
+ * Activity中使用DataBinding时setContentView的简化
+ * [layout] 布局文件
+ * @return 返回一个Binding的对象实例
+ */
+
+fun <T : ViewDataBinding> Activity.bindView(@LayoutRes layout: Int): T {
+    return DataBindingUtil.setContentView(this, layout)
+}
+
+
+/**
+ * Activity中使用DataBinding时setContentView的简化
+ * [layout] 布局文件
+ * @return 返回一个Binding的对象实例 T 类型的 可null的
+ */
+fun <T : ViewDataBinding> Activity.bindView(view: View): T? {
+    return DataBindingUtil.bind(view)
+}
+
+fun BaseActivity<*>.showLoading(message: String = "正在加载中,请稍后...") {
     this.loadingDialog.showDialog(this)
 }
 
-fun BaseActivity.showError2() {
+fun BaseActivity<*>.showError2() {
 
 }
 
 
-fun BaseActivity.dismissLoading() {
+fun BaseActivity<*>.dismissLoading() {
     this.loadingDialog.dismissDialog()
 
 }

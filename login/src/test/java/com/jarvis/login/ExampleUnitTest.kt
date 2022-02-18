@@ -1,4 +1,4 @@
-package com.jarvis.version
+package com.jarvis.login
 
 import org.junit.Test
 

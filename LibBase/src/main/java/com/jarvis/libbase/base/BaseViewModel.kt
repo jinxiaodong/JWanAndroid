@@ -9,7 +9,6 @@ import com.jarvis.libbase.liveData.LoadingUI
  * @date 2022/2/10
  */
 open class BaseViewModel : ViewModel() {
-
     val loadingUI: LoadingUI by lazy { LoadingUI() }
 
 }

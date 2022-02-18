@@ -1,4 +1,4 @@
-package com.jarvis.network.manager
+package com.jarvis.libbase.network.manager
 
 import com.jarvis.libbase.liveData.event.EventLiveData
 

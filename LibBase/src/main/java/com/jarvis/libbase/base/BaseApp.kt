@@ -5,7 +5,7 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import com.blankj.utilcode.util.LogUtils
 import com.jarvis.libbase.core.ApplicationHolder
-import com.jarvis.network.manager.NetWorkStateReceiver
+import com.jarvis.libbase.network.manager.NetWorkStateReceiver
 
 /**
  * @author jinxiaodong
@@ -32,7 +32,7 @@ open class BaseApp : Application() {
 
     private fun registerNetWorkStateChangeListener() {
         this.registerReceiver(
-            com.jarvis.network.manager.NetWorkStateReceiver(),
+            NetWorkStateReceiver(),
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
 

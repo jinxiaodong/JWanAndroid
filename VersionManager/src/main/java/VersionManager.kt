@@ -1,3 +1,5 @@
+
+
 /**
  * @author jinxiaodong
  * @description：
@@ -30,12 +32,14 @@ private object Version {
 
     const val webkit = "1.4.0"
     const val media = "1.5.0"
+    const val koin_version = "3.1.5"
 
 }
 
 object Kotlin {
 
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
+    const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:1.6.10"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
     const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 }
@@ -206,6 +210,12 @@ object Deps {
     const val smartRefreshLayout_kernel = "com.scwang.smart:refresh-layout-kernel:2.0.3"
     const val smartRefreshLayout_header_classics = "com.scwang.smart:refresh-header-classics:2.0.3"
     const val smartRefreshLayout_footer_classics = "com.scwang.smart:refresh-footer-classics:2.0.3"
+
+    // Koin for Kotlin
+    const val koin_core = "io.insert-koin:koin-core:${Version.koin_version}"
+    const val koin_android = "io.insert-koin:koin-android:${Version.koin_version}"
+    const val koin_android_compat = "io.insert-koin:koin-android-compat:${Version.koin_version}"
+    const val koin_test = "io.insert-koin:koin-test:${Version.koin_version}"
 }
 
 
