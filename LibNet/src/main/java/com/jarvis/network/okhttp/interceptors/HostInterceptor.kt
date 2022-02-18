@@ -13,7 +13,7 @@ class HostInterceptor : Interceptor {
 
         val originalRequest = chain.request()
 
-        val oldHost = originalRequest.url.host
+//        val oldHost = originalRequest.url.host
         val oldHostString = originalRequest.url.toString()
         //替换Host策略
 

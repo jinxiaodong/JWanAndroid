@@ -8,6 +8,7 @@ import com.jarvis.network.RetrofitManager
 import com.jarvis.network.config.getBaseHost
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.parameter.parametersOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 
@@ -19,6 +20,6 @@ import org.koin.dsl.module
 
 val moduleLogin = module {
     single { get<RetrofitManager> { parametersOf(getBaseHost()) }.getService(LoginService::class.java) }
-    single { LoginRepo() }
+    single { LoginRepo() } bind ILoginResource::class
     viewModel { LoginViewModel(get()) }
 }

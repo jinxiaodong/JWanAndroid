@@ -41,17 +41,12 @@ abstract class BaseActivity<bindingType : ViewDataBinding> : AppCompatActivity()
 
     }
 
-    open fun initConfig() {
+    abstract fun initConfig()
 
-    }
+    abstract fun initView()
 
-    open fun initView() {
 
-    }
-
-    open fun initData() {
-
-    }
+    abstract fun initData()
 
     open fun onNetworkStateChanged(netState: NetState) {
 
@@ -76,7 +71,6 @@ abstract class BaseActivity<bindingType : ViewDataBinding> : AppCompatActivity()
     private fun observerNetWorkState() {
         NetWorkStateManager.instance.netWorkStateCallback.observe(this) { onNetworkStateChanged(it) }
     }
-
 
 
 }

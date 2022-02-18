@@ -40,8 +40,8 @@ object Kotlin {
 
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
     const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:1.6.10"
-    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
-    const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 }
 
 /**

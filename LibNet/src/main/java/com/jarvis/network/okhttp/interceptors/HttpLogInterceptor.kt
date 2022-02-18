@@ -72,34 +72,34 @@ class HttpLogInterceptor(block: (HttpLogInterceptor.() -> Unit)? = null) : Inter
             LogLevel.NONE -> {
             }
             LogLevel.BASIC -> {
-                logBasicReq(sb, request, connection)
+                logBasicReq(sb, request)
             }
             LogLevel.HEADERS -> {
-                logHeadersReq(sb, request, connection)
+                logHeadersReq(sb, request)
 
             }
             LogLevel.BODY -> {
-                logBodyReq(sb, request, connection)
+                logBodyReq(sb, request)
             }
         }
         sb.appendLine("----------------------------------------------------------------------")
         logIt(sb)
     }
 
-    private fun logBasicReq(sb: StringBuilder, request: Request, connection: Connection?) {
+    private fun logBasicReq(sb: StringBuilder, request: Request) {
         sb.appendLine("请求 method:${request.method} url:${decodeUrlString(request.url.toString())} tag:")
     }
 
-    private fun logHeadersReq(sb: StringBuilder, request: Request, connection: Connection?) {
-        logBasicReq(sb, request, connection)
+    private fun logHeadersReq(sb: StringBuilder, request: Request) {
+        logBasicReq(sb, request)
         val headerString = request.headers.joinToString("") { headers ->
             "请求 Header:{${headers.first}=${headers.second}}\n"
         }
         sb.appendLine(headerString)
     }
 
-    private fun logBodyReq(sb: StringBuilder, request: Request, connection: Connection?) {
-        logHeadersReq(sb, request, connection)
+    private fun logBodyReq(sb: StringBuilder, request: Request ) {
+        logHeadersReq(sb, request)
         sb.appendLine("RequestBody:${request.body.toString()}")
     }
 

@@ -35,7 +35,7 @@ inline fun <reified T : Activity> Activity.startActivity(extras: Bundle) {
  * @return 返回一个Binding的对象实例
  */
 
-fun <T : ViewDataBinding> Activity.bindView(@LayoutRes layout: Int): T {
+ fun <T : ViewDataBinding> Activity.bindView(@LayoutRes layout: Int): T {
     return DataBindingUtil.setContentView(this, layout)
 }
 
@@ -45,7 +45,7 @@ fun <T : ViewDataBinding> Activity.bindView(@LayoutRes layout: Int): T {
  * [layout] 布局文件
  * @return 返回一个Binding的对象实例 T 类型的 可null的
  */
-fun <T : ViewDataBinding> Activity.bindView(view: View): T? {
+ fun <T : ViewDataBinding> Activity.bindView(view: View): T? {
     return DataBindingUtil.bind(view)
 }
 

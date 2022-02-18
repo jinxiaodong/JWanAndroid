@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.jarvis.libbase.R
-import com.jarvis.network.RequestStatus
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -71,61 +70,61 @@ abstract class BasePageFragment<T> : BaseFragment() {
 
     open fun onRefresh(showLoading: Boolean) {
         mPage = PAGE_START_POSITION
-        lifecycleScope.launch { getListData(showLoading) }
+//        lifecycleScope.launch { getListData(showLoading) }
     }
 
     open fun onLoadMore() {
-        lifecycleScope.launch { getListData(false) }
+//        lifecycleScope.launch { getListData(false) }
     }
 
-    open suspend fun createPageFlow(page: Int): Flow<com.jarvis.network.RequestStatus<List<T>>> {
-        return flow {
-            emit(com.jarvis.network.RequestStatus.Success("",ArrayList()))
-        }
-    }
-
-    private suspend fun getListData(showLoading: Boolean) {
-        createPageFlow(mPage)
-            .onCompletion {
-                if (mPage <= PAGE_START_POSITION + 1) {
-                    mRefreshLayout.finishRefresh()
-                } else {
-                    mRefreshLayout.finishLoadMore()
-                }
-            }.collect { state ->
-
-                when (state) {
-                    is com.jarvis.network.RequestStatus.Loading -> {
-
-                    }
-                    is com.jarvis.network.RequestStatus.Success -> {
-                        state.data.let {
-                            if (mPage == PAGE_START_POSITION) {
-                                if (it.isEmpty()) {
-                                    mRecyclerView.layoutManager =
-                                        LinearLayoutManager(requireContext())
-                                } else {
-                                    mRecyclerView.layoutManager = mLayoutManager
-                                }
-                                mAdapter.setNewInstance(ArrayList(it))
-
-                            } else {
-                                if (it.size < PAGE_SIZE_DEFAULT) {
-                                    mRefreshLayout.setNoMoreData(true)
-                                    mAdapter.addData(it)
-                                } else {
-                                    mAdapter.addData(it)
-                                }
-                            }
-                            mPage += 1
-                        }
-                    }
-                    is com.jarvis.network.RequestStatus.Error -> {
-
-                    }
-                }
-            }
-    }
+//    open suspend fun createPageFlow(page: Int): Flow<com.jarvis.network.RequestStatus<List<T>>> {
+//        return flow {
+//            emit(RequestStatus.Success("",ArrayList()))
+//        }
+//    }
+//
+//    private suspend fun getListData(showLoading: Boolean) {
+//        createPageFlow(mPage)
+//            .onCompletion {
+//                if (mPage <= PAGE_START_POSITION + 1) {
+//                    mRefreshLayout.finishRefresh()
+//                } else {
+//                    mRefreshLayout.finishLoadMore()
+//                }
+//            }.collect { state ->
+//
+//                when (state) {
+//                    is com.jarvis.network.RequestStatus.Loading -> {
+//
+//                    }
+//                    is com.jarvis.network.RequestStatus.Success -> {
+//                        state.data.let {
+//                            if (mPage == PAGE_START_POSITION) {
+//                                if (it.isEmpty()) {
+//                                    mRecyclerView.layoutManager =
+//                                        LinearLayoutManager(requireContext())
+//                                } else {
+//                                    mRecyclerView.layoutManager = mLayoutManager
+//                                }
+//                                mAdapter.setNewInstance(ArrayList(it))
+//
+//                            } else {
+//                                if (it.size < PAGE_SIZE_DEFAULT) {
+//                                    mRefreshLayout.setNoMoreData(true)
+//                                    mAdapter.addData(it)
+//                                } else {
+//                                    mAdapter.addData(it)
+//                                }
+//                            }
+//                            mPage += 1
+//                        }
+//                    }
+//                    is com.jarvis.network.RequestStatus.Error -> {
+//
+//                    }
+//                }
+//            }
+//    }
 
     fun nowPage() = mPage
 

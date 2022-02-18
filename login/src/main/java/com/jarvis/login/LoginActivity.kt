@@ -1,8 +1,8 @@
 package com.jarvis.login
 
-import android.os.Bundle
 import com.jarvis.libbase.base.BaseActivity
 import com.jarvis.login.databinding.ActivityLoginBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author jinxiaodong
@@ -11,8 +11,26 @@ import com.jarvis.login.databinding.ActivityLoginBinding
  */
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
+
+    private val viewModel: LoginViewModel by viewModel()
+
     override fun getContentLayout() = R.layout.activity_login
 
 
+    override fun initConfig() {
+    }
+
+    override fun initView() {
+        binding.apply {
+            model = viewModel
+
+
+            close.setOnClickListener { finish() }
+        }
+    }
+
+
+    override fun initData() {
+    }
 
 }

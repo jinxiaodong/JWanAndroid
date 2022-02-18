@@ -24,8 +24,8 @@ class AppException : Exception {
     }
 
     constructor(error: Error, cause: Throwable?) {
-        this.errorCode = error?.getErrorCode()
-        this.errorMsg = error?.getErrorMsg()
+        this.errorCode = error.getErrorCode()
+        this.errorMsg = error.getErrorMsg()
         this.errorLog = cause?.message
         this.throwable = cause
     }

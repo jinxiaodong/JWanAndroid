@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+
 }
 
 android {
@@ -35,15 +36,5 @@ android {
 dependencies {
     implementation project(":LibBase")
 
-    api Deps.okhttp
-    api Deps.okhttp_logging
-    api Deps.retrofit
-    api Deps.adapter_rxjava3
-    api Deps.converter_gson
-    api Deps.glide
-    api Deps.glide_transformations
-    api Deps.glide_gpuimage
-    
-    kapt Deps.glide_compiler
 
 }
