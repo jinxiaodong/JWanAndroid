@@ -23,8 +23,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     override fun initView() {
         binding.apply {
             model = viewModel
-
-
             close.setOnClickListener { finish() }
         }
     }

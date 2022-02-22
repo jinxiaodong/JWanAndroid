@@ -1,40 +1,36 @@
-package com.jarvis.libbase.base
+package com.jarvis.common.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
-import com.jarvis.libbase.ktx.dismissLoading
-import com.jarvis.libbase.ktx.showLoading
-import com.jarvis.libbase.liveData.observeLoadingUI
-import com.jarvis.libbase.view.LoadingDialog
+import androidx.lifecycle.LiveData
+import com.blankj.utilcode.util.LogUtils
 
 /**
  * @author jinxiaodong
  * @description：
- * @date 2022/2/10
+ * @date 2022/2/22
  */
-abstract class BaseFragment : Fragment() {
 
-    private val baseViewModel: BaseViewModel?
-        get() = lazyBaseViewModel?.value
-    private var lazyBaseViewModel: Lazy<BaseViewModel>? = null
+abstract class BaseFragment : Fragment {
 
-    lateinit var loadingDialog: LoadingDialog
+    /**
+     * 无参构造函数
+     */
+    constructor() : super()
 
-    @LayoutRes
-    private var mContentLayoutId = 0
+    /**
+     * 可以填入layout布局的构造函数，使用viewBinding的方便
+     * [layout] layout布局文件的id
+     */
+    constructor(@LayoutRes layout: Int) : super(layout)
 
-    abstract fun getContentLayout(): Int
-
-    abstract fun initView(rootView: View)
-
-    abstract fun initData()
+    //UI的viewDataBinding对象
+    private var binding: ViewDataBinding? = null
 
 
     override fun onCreateView(
@@ -42,50 +38,45 @@ abstract class BaseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mContentLayoutId = getContentLayout()
-        return if (mContentLayoutId != 0) {
-            inflater.inflate(mContentLayoutId, container, false)
-        } else null
+        return inflater.inflate(getLayoutRes(), container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadingDialog = LoadingDialog(view.context)
-        initView(view)
-        createObserver()
-        registerUIChange()
+        binding = bindView(view, savedInstanceState)
+        binding?.lifecycleOwner = viewLifecycleOwner
+        initConfig()
         initData()
-
     }
 
-    private fun createObserver() {
-        baseViewModel?.observeLoadingUI(this)
+    @LayoutRes
+    abstract fun getLayoutRes(): Int
 
+    abstract fun bindView(view: View, savedInstanceState: Bundle?): ViewDataBinding
+
+    /**
+     * view初始化后的必要配置
+     */
+    open fun initConfig() {
+//        LogUtils.d("${this.javaClass.simpleName} 初始化 initConfig")
     }
 
-    private fun registerUIChange() {
-        baseViewModel?.loadingUI?.showLoading?.observe(this) {
-            showLoading()
-        }
-
-        baseViewModel?.loadingUI?.disMiss?.observe(this) {
-            dismissLoading()
-        }
-
+    /**
+     * view初始化后的必要数据
+     */
+    open fun initData() {
+//        LogUtils.d("${this.javaClass.simpleName} 初始化 initData")
     }
 
-
-    fun initBaseViewModel(vm: Lazy<BaseViewModel>) {
-        lazyBaseViewModel = vm
+    override fun onDestroy() {
+        super.onDestroy()
+        binding?.unbind()
     }
 
-    inline fun <reified VM : BaseViewModel> viewModelsInBase(
-        noinline ownerProducer: () -> ViewModelStoreOwner = { this },
-        noinline factoryProducer: (() -> ViewModelProvider.Factory)? = null
-    ): Lazy<VM> {
-        val vm = viewModels<VM>(ownerProducer, factoryProducer)
-        initBaseViewModel(vm)
-        return vm
+    /**
+     * 扩展liveData的observe函数
+     */
+    protected fun <T> LiveData<T>.observerKt(block: (T?) -> Unit) {
+        this.observe(viewLifecycleOwner) { data -> block(data) }
     }
 }

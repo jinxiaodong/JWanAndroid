@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.core.app.ComponentActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LifecycleOwner
 import com.jarvis.libbase.base.BaseActivity
 
 /**
@@ -48,6 +50,13 @@ inline fun <reified T : Activity> Activity.startActivity(extras: Bundle) {
  fun <T : ViewDataBinding> Activity.bindView(view: View): T? {
     return DataBindingUtil.bind(view)
 }
+
+/**
+ * 扩展lifeCycleOwner属性，便于和Fragment之间使用lifeCycleOwner 一致性
+ */
+val ComponentActivity.viewLifeCycleOwner: LifecycleOwner
+    get() = this
+
 
 fun BaseActivity<*>.showLoading(message: String = "正在加载中,请稍后...") {
     this.loadingDialog.showDialog(this)

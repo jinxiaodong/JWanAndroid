@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.LiveData
 import com.blankj.utilcode.util.ToastUtils
 import com.jarvis.libbase.ktx.bindView
 import com.jarvis.libbase.ktx.dismissLoading
 import com.jarvis.libbase.ktx.showLoading
+import com.jarvis.libbase.ktx.viewLifeCycleOwner
 import com.jarvis.libbase.liveData.observeLoadingUI
 import com.jarvis.libbase.network.manager.NetState
 import com.jarvis.libbase.network.manager.NetWorkStateManager
@@ -73,4 +75,10 @@ abstract class BaseActivity<bindingType : ViewDataBinding> : AppCompatActivity()
     }
 
 
+    /**
+     * 扩展liveData的observe函数
+     */
+    protected fun <T> LiveData<T>.observerKt(block: (T?) -> Unit) {
+        this.observe(viewLifeCycleOwner) { data -> block(data) }
+    }
 }
