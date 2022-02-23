@@ -1,6 +1,6 @@
 package com.jarvis.libbase.ktx
 
-import com.jarvis.common.base.BaseFragment
+import com.jarvis.libbase.base.BaseFragment
 
 
 /**

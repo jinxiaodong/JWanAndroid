@@ -1,6 +1,7 @@
 package com.jarvis.wanandroid
 
 import com.jarvis.libbase.base.BaseApp
+import com.jarvis.libbase.network.RetrofitManager
 import com.jarvis.login.di.moduleLogin
 import com.jarvis.network.moduleNetWork
 import org.koin.android.ext.koin.androidContext
@@ -13,14 +14,15 @@ import org.koin.core.logger.Level
  * @description：
  * @date 2022/2/18
  */
- class App :BaseApp() {
+class App : BaseApp() {
 
     override fun onCreate() {
         super.onCreate()
+        RetrofitManager.initConfig("https://wanandroid.com/")
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@App)
-            modules(moduleNetWork,moduleLogin)
+            modules(moduleNetWork, moduleLogin)
         }
     }
 }

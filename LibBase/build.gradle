@@ -82,6 +82,13 @@ dependencies {
     kapt Androidx.room_compiler
 
 
+    // 基础依赖包，必须要依赖
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.1'
+    // kotlin扩展（可选）
+    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.1'
+    // fragment快速实现（可选）已废弃
+    implementation 'com.geyifeng.immersionbar:immersionbar-components:3.2.1'
+
 //    api Tests.junit
 //    api Tests.androidx_junit
 //    api "junit:junit:4.13.2"

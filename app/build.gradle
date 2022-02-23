@@ -41,7 +41,6 @@ dependencies {
 
     implementation project(":home")
     implementation project(":login")
-    implementation project(":LibNet")
     implementation project(":LibBase")
 
 

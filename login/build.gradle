@@ -41,5 +41,4 @@ android {
 
 dependencies {
     implementation project(":LibBase")
-    implementation project(":LibNet")
 }

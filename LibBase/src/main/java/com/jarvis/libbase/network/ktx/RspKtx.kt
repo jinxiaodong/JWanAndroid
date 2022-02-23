@@ -1,10 +1,10 @@
-package com.jarvis.login.repo
+package com.jarvis.libbase.network.ktx
 
 /**
  * @author jinxiaodong
  * @description：
  * @date 2022/2/17
  */
-class LoginRepo : ILoginResource {
+class RspKtx {
 
 }

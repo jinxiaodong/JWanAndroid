@@ -1,4 +1,4 @@
-package com.jarvis.common.base
+package com.jarvis.libbase.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import com.blankj.utilcode.util.LogUtils
 
 /**
  * @author jinxiaodong

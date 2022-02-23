@@ -5,10 +5,9 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
-import com.blankj.utilcode.util.ToastUtils
+import com.gyf.immersionbar.ImmersionBar
+import com.jarvis.libbase.R
 import com.jarvis.libbase.ktx.bindView
-import com.jarvis.libbase.ktx.dismissLoading
-import com.jarvis.libbase.ktx.showLoading
 import com.jarvis.libbase.ktx.viewLifeCycleOwner
 import com.jarvis.libbase.liveData.observeLoadingUI
 import com.jarvis.libbase.network.manager.NetState
@@ -34,14 +33,17 @@ abstract class BaseActivity<bindingType : ViewDataBinding> : AppCompatActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadingDialog = LoadingDialog(this)
         binding = bindView(getContentLayout())
+        loadingDialog = LoadingDialog(this)
         createObserver()
         initConfig()
+        //初始化沉浸式
+        initImmersionBar()
         initView()
         initData()
 
     }
+
 
     abstract fun initConfig()
 
@@ -52,6 +54,10 @@ abstract class BaseActivity<bindingType : ViewDataBinding> : AppCompatActivity()
 
     open fun onNetworkStateChanged(netState: NetState) {
 
+    }
+
+    open fun initImmersionBar() {
+        ImmersionBar.with(this).navigationBarColor(R.color.color_008577).init()
     }
 
     protected fun observeLoadingUI(viewModel: BaseViewModel) {

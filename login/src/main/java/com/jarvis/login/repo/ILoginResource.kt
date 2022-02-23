@@ -6,4 +6,5 @@ package com.jarvis.login.repo
  * @date 2022/2/17
  */
 interface ILoginResource {
+
 }

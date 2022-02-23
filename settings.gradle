@@ -15,5 +15,4 @@ rootProject.name = "JWanAndroid"
 include ':app'
 include ':LibBase'
 include ':home'
-include ':LibNet'
 include ':login'
