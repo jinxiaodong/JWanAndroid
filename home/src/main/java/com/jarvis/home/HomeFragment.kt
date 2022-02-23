@@ -3,12 +3,10 @@ package com.jarvis.home
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
-import com.jarvis.home.api.HomeService
 import com.jarvis.home.databinding.FragmentHomeBinding
-import com.jarvis.home.repo.HomeRepo
 import com.jarvis.home.viewmodel.HomeViewModel
 import com.jarvis.libbase.base.BaseFragment
-import com.jarvis.libbase.network.RetrofitManager
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author jinxiaodong
@@ -17,6 +15,7 @@ import com.jarvis.libbase.network.RetrofitManager
  */
 class HomeFragment : BaseFragment() {
 
+    private val homeViewModel: HomeViewModel by viewModel()
 
     companion object {
         fun newInstance(): HomeFragment {
@@ -33,11 +32,14 @@ class HomeFragment : BaseFragment() {
 
     override fun initConfig() {
         super.initConfig()
-        HomeViewModel().getBanner()
+        observeLoadingUI(homeViewModel)
+
     }
 
     override fun initData() {
         super.initData()
+
+        homeViewModel.getBanner()
 
 
     }

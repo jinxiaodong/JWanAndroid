@@ -12,7 +12,7 @@ import com.jarvis.libbase.base.BaseFragment
 
 fun BaseFragment.showLoading(message: String = "正在加载中,请稍后...") {
     context?.let {
-//        this.loadingDialog.showDialog(it)
+        this.loadingDialog.showDialog(it)
     }
 }
 
@@ -26,5 +26,5 @@ fun BaseFragment.showError2() {
 
 
 fun BaseFragment.dismissLoading() {
-//    this.loadingDialog.dismissDialog()
+    this.loadingDialog.dismissDialog()
 }

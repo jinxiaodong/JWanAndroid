@@ -60,9 +60,6 @@ abstract class BaseActivity<bindingType : ViewDataBinding> : AppCompatActivity()
         ImmersionBar.with(this).navigationBarColor(R.color.color_008577).init()
     }
 
-    protected fun observeLoadingUI(viewModel: BaseViewModel) {
-        viewModel.observeLoadingUI(this)
-    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -80,6 +77,12 @@ abstract class BaseActivity<bindingType : ViewDataBinding> : AppCompatActivity()
         NetWorkStateManager.instance.netWorkStateCallback.observe(this) { onNetworkStateChanged(it) }
     }
 
+    /**
+     * 如果网络需要关联 loadingUI，调用该方法注册
+     */
+    protected fun observeLoadingUI(viewModel: BaseViewModel) {
+        viewModel.observeLoadingUI(this)
+    }
 
     /**
      * 扩展liveData的observe函数

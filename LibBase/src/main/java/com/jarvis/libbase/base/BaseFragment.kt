@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import com.jarvis.libbase.liveData.observeLoadingUI
+import com.jarvis.libbase.view.LoadingDialog
 
 /**
  * @author jinxiaodong
@@ -16,6 +18,7 @@ import androidx.lifecycle.LiveData
  */
 
 abstract class BaseFragment : Fragment {
+    lateinit var loadingDialog: LoadingDialog
 
     /**
      * 无参构造函数
@@ -44,6 +47,7 @@ abstract class BaseFragment : Fragment {
         super.onViewCreated(view, savedInstanceState)
         binding = bindView(view, savedInstanceState)
         binding?.lifecycleOwner = viewLifecycleOwner
+        loadingDialog = LoadingDialog(view.context)
         initConfig()
         initData()
     }
@@ -67,10 +71,22 @@ abstract class BaseFragment : Fragment {
 //        LogUtils.d("${this.javaClass.simpleName} 初始化 initData")
     }
 
+
+
+
     override fun onDestroy() {
         super.onDestroy()
         binding?.unbind()
     }
+
+    /**
+     * 如果网络需要关联 loadingUI，调用该方法注册
+     */
+    protected fun observeLoadingUI(viewModel: BaseViewModel) {
+        viewModel.observeLoadingUI(this)
+    }
+
+
 
     /**
      * 扩展liveData的observe函数

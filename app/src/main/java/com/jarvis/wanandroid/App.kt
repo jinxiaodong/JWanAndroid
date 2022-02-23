@@ -1,5 +1,6 @@
 package com.jarvis.wanandroid
 
+import com.jarvis.home.di.moduleHome
 import com.jarvis.libbase.base.BaseApp
 import com.jarvis.libbase.network.RetrofitManager
 import com.jarvis.login.di.moduleLogin
@@ -22,7 +23,7 @@ class App : BaseApp() {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@App)
-            modules(moduleNetWork, moduleLogin)
+            modules(moduleNetWork, moduleLogin, moduleHome)
         }
     }
 }
