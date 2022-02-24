@@ -24,10 +24,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         fragments.add(HomeFragment.newInstance())
         fragments.add(HomeFragment.newInstance())
         fragments.add(HomeFragment.newInstance())
-
-        binding.viewpager.adapter = HomePageAdapter(this, fragments)
-        binding.viewpager.offscreenPageLimit = 2
-
+        binding.viewpager.apply {
+            adapter = HomePageAdapter(this@MainActivity, fragments)
+            offscreenPageLimit = 2
+            isUserInputEnabled = false
+        }
     }
 
     override fun initData() {

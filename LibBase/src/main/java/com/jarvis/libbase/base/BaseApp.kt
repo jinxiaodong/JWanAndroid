@@ -1,10 +1,14 @@
 package com.jarvis.libbase.base
 
 import android.app.Application
+import android.content.Context
 import android.content.IntentFilter
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import com.blankj.utilcode.util.LogUtils
 import com.jarvis.libbase.core.ApplicationHolder
+import com.jarvis.libbase.network.manager.JNetWorkCallback
 import com.jarvis.libbase.network.manager.NetWorkStateReceiver
 
 /**
@@ -37,13 +41,13 @@ open class BaseApp : Application() {
         )
 
         //弃用后的适配方案
-//        val cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-//        cm.registerNetworkCallback(
-//            NetworkRequest.Builder()
-//                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-//                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-//                .build(), JNetWorkCallback()
-//        )
+        val cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        cm.registerNetworkCallback(
+            NetworkRequest.Builder()
+                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+                .build(), JNetWorkCallback()
+        )
 
     }
 }
