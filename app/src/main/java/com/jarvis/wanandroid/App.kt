@@ -1,8 +1,8 @@
 package com.jarvis.wanandroid
 
 import com.jarvis.home.di.moduleHome
-import com.jarvis.libbase.base.BaseApp
-import com.jarvis.libbase.network.RetrofitManager
+import com.jarvis.lib.base.BaseApp
+import com.jarvis.lib.network.RetrofitManager
 import com.jarvis.login.di.moduleLogin
 import com.jarvis.network.moduleNetWork
 import org.koin.android.ext.koin.androidContext

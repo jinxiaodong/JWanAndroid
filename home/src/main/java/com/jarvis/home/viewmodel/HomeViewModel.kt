@@ -1,13 +1,8 @@
 package com.jarvis.home.viewmodel
 
-import androidx.lifecycle.viewModelScope
 import com.jarvis.home.api.HomeService
-import com.jarvis.home.repo.HomeRepo
-import com.jarvis.home.repo.IHomeResource
-import com.jarvis.libbase.base.BaseViewModel
-import com.jarvis.libbase.network.RetrofitManager
-import com.jarvis.libbase.network.response.*
-import kotlinx.coroutines.launch
+import com.jarvis.lib.base.BaseViewModel
+import com.jarvis.lib.network.response.*
 
 /**
  * @author jinxiaodong

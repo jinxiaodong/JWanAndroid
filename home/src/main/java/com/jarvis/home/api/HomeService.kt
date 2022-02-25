@@ -1,7 +1,7 @@
 package com.jarvis.home.api
 
 import com.jarvis.home.repo.bean.BannerResponse
-import com.jarvis.libbase.network.response.ApiResponse
+import com.jarvis.lib.network.response.ApiResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

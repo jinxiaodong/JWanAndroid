@@ -41,7 +41,7 @@ dependencies {
 
     implementation project(":home")
     implementation project(":login")
-    implementation project(":LibBase")
+    implementation project(":JLibBase")
 
 
 }

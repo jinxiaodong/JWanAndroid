@@ -18,7 +18,7 @@ buildscript {
 }
 
 plugins{
-    id "com.jarvis.version"
+    id "com.jarvis.plugin.version"
 }
 
 task clean(type: Delete) {

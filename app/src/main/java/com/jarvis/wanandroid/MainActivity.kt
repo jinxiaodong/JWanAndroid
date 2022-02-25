@@ -1,11 +1,10 @@
 package com.jarvis.wanandroid
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.jarvis.home.HomeFragment
-import com.jarvis.libbase.base.BaseActivity
+import com.jarvis.lib.base.BaseActivity
 import com.jarvis.wanandroid.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {

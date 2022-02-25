@@ -2,7 +2,7 @@ package com.jarvis.home.repo
 
 import com.blankj.utilcode.util.LogUtils
 import com.jarvis.home.api.HomeService
-import com.jarvis.libbase.network.response.*
+import com.jarvis.lib.network.response.*
 
 /**
  * @author jinxiaodong

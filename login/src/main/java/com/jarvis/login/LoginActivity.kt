@@ -1,8 +1,7 @@
 package com.jarvis.login
 
-import com.jarvis.libbase.base.BaseActivity
+import com.jarvis.lib.base.BaseActivity
 import com.jarvis.login.databinding.ActivityLoginBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author jinxiaodong

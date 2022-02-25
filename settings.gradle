@@ -9,10 +9,15 @@ dependencyResolutionManagement {
         }
     }
 }
-includeBuild 'VersionManager'
 
 rootProject.name = "JWanAndroid"
 include ':app'
-include ':LibBase'
 include ':home'
 include ':login'
+include ':JLibBase'
+
+includeBuild(new File(settingsDir, "../JVersionManager"))
+includeBuild(new File(settingsDir, "../JLibrary"))
+
+project(":JLibBase").projectDir = new File(settingsDir, "../JLibrary/JlibBase")
+

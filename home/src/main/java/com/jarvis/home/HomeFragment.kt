@@ -8,8 +8,7 @@ import com.jarvis.home.databinding.FragmentHomeBinding
 import com.jarvis.home.repo.bean.ArticleResponse
 import com.jarvis.home.ui.HomeAdapter
 import com.jarvis.home.viewmodel.HomeViewModel
-import com.jarvis.libbase.base.BaseFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.jarvis.lib.base.BaseFragment
 
 /**
  * @author jinxiaodong

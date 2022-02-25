@@ -1,8 +1,7 @@
 package com.jarvis.login
 
-import androidx.databinding.Observable
 import androidx.databinding.ObservableField
-import com.jarvis.libbase.base.BaseViewModel
+import com.jarvis.lib.base.BaseViewModel
 import com.jarvis.login.repo.ILoginResource
 
 /**
