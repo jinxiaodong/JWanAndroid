@@ -1,11 +1,27 @@
+pluginManagement {
+    repositories {
+//        gradlePluginPortal()
+//        google()
+//        mavenCentral()
+        maven {
+            allowInsecureProtocol = true
+            url 'http://localhost:8081/artifactory/android'
+        }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'com.jarvis.plugin.version') {
+                useModule("com.jarvis.plugin:version:0.0.2-SNAPSHOT")
+            }
+        }
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
-        mavenCentral()
-        jcenter()
         maven {
-            url 'https://jitpack.io'
+            allowInsecureProtocol = true
+            url 'http://localhost:8081/artifactory/android'
         }
     }
 }
@@ -14,10 +30,6 @@ rootProject.name = "JWanAndroid"
 include ':app'
 include ':home'
 include ':login'
-include ':JLibBase'
 
-includeBuild(new File(settingsDir, "../JVersionManager"))
-includeBuild(new File(settingsDir, "../JLibrary"))
 
-project(":JLibBase").projectDir = new File(settingsDir, "../JLibrary/JlibBase")
-
+include ':baselib'

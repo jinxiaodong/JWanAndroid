@@ -35,9 +35,7 @@ android {
         dataBinding true
     }
 }
-
 dependencies {
-    implementation project(":baselib")
 
-
+    implementation 'com.jarvis.lib:base_lib:0.0.1-SNAPSHOT'
 }

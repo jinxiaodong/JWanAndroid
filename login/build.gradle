@@ -34,11 +34,8 @@ android {
     buildFeatures {
         dataBinding true
     }
-    buildFeatures {
-        dataBinding true
-    }
 }
 
 dependencies {
-    implementation project(":JLibBase")
+    implementation project(":baselib")
 }
